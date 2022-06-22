@@ -1,24 +1,32 @@
+import fastifyAutoload from '@fastify/autoload';
+import fastifySwagger from '@fastify/swagger';
+import { ajvTypeBoxPlugin, TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
+import fastify from 'fastify';
+import { join } from 'path';
 
-import fastify from "fastify";
-import { addLoginRoutes } from "./routes/login/get-account";
-import { addbabySitter } from "./routes/babySitter/add-babySitter";
-// Require the framework and instantiate it
-export  const server= require('fastify')({ logger: true })
+export const server = fastify({
+	logger: true,
+	ajv: {
+		customOptions: {
+			removeAdditional: 'all',
+			ownProperties: true,
+		},
+		plugins: [ajvTypeBoxPlugin],
+	},
+}).withTypeProvider<TypeBoxTypeProvider>();
 
-// Declare a route
-server.get('/', async (request:any, reply:any) => {
-  return { hello: 'world' }
+server.register(fastifySwagger, {
+	routePrefix: '/docs',
+	exposeRoute: true,
+	mode: 'dynamic',
+	openapi: {
+		info: {
+			title: 'Reayia API',
+			version: '0.0.1',
+		},
+	},
 });
-addLoginRoutes(server);
-addbabySitter(server);
-/*
-server.post('/login',async (request:any, reply:any)=>{
-          const contacts = ['Ahmad','Ali','Amani','Hadi'];
-          return contacts;
-});
-server.get('/login',async (request:any, reply:any)=>{
-  const contacts = ['Ahmad','Ali','Amani','Hadi'];
-  return contacts;
-});*/
 
-// Run the server!
+server.register(fastifyAutoload, {
+	dir: join(__dirname, 'routes'),
+});
