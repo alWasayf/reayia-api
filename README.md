@@ -1,12 +1,16 @@
-# Red3lay API
+# Reayai API
 
 ## Features
 1. Login
-2. Create contact
-3. Update contact
-4. Delete contact
-5. View all contacts
-6. Search contacts by name
+2. Logout
+3. Add babySitter
+4. Update babySitter
+5. Delete babySitter
+6. View all babySitter 
+7. Search babySitter by nationality
+8. Delete account Parent
+9. Update account Parent
+10. View account Parent
 
 ## Stack
 1. Runtime Environment: `Node.js`
@@ -15,12 +19,5 @@
 4. ORM: `Prisma`
 5. DB: `Postgres`
 
-## Requirements
-1. At least 10 endpoints
-2. Authentication (JWT)
-3. Validation
-4. No Supabase
-5. Deployed to AWS or Heroku
-
-## Deadline
-Wednesday 29 June
+## Schema 
+![reayiaDiagram](https://user-images.githubusercontent.com/49132323/174951663-f1399fd1-6b7a-4035-99ae-3b361c413132.jpg)
