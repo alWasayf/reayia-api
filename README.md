@@ -9,7 +9,7 @@
 6. The Administrator shall be able to delete Babysitter.  
 7. The Administrator shall be able to set babysitter schedule by specifying the available date/time slots.
 8. The Administrator shall be able to delete inappropriate reviews
-## Admin Functionality Requirements:
+## The Individual Functionality Requirements:
 1.	The Individual shall be able to sign up. 
 2.	The Individual shall be able to Sign-in by username and password.
 3.	The Individual shall be able to view his/her account. 
